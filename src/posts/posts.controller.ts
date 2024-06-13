@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Patch,
   Post,
@@ -26,7 +27,12 @@ export class PostsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.postsService.findOne(id);
+    const user = this.postsService.findOne(id);
+    if (!user) {
+      throw new NotFoundException(`Post #${id} not found`);
+    }
+
+    return user;
   }
 
   @Patch(':id')
@@ -34,11 +40,19 @@ export class PostsController {
     @Param('id') id: string,
     @Body() updatePostDto: Prisma.PostUpdateInput,
   ) {
-    return this.postsService.update(id, updatePostDto);
+    const user = this.postsService.update(id, updatePostDto);
+
+    if (!user) {
+      throw new NotFoundException(`Post #${id} not found`);
+    }
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.postsService.remove(id);
+    const user = this.postsService.remove(id);
+
+    if (!user) {
+      throw new NotFoundException(`Post #${id} not found`);
+    }
   }
 }
