@@ -1,0 +1,5 @@
+[phases.build]
+commands = [
+  "pnpm prisma generate",
+  "pnpm run build"
+]
