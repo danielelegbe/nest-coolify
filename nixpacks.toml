@@ -1,10 +1,2 @@
 [phases.install]
-commands = [
-  "pnpm install --no-frozen-lockfile"
-] 
-
-[phases.build]
-commands = [
-  "pnpm prisma generate",
-  "pnpm run build"
-]
+commands = ["pnpm install --no-frozen-lockfile"]
