@@ -1,0 +1,13 @@
+version: 1.0
+runtime: node18
+build:
+  commands:
+    pre-build:
+      - npm i -g pnpm
+    build:        
+      - pnpm install
+      - pnpm build
+
+
+run:
+  command: pnpm start
