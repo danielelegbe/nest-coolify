@@ -1,5 +1,5 @@
 version: 1.0
-runtime: node18
+runtime: nodejs18
 build:
   commands:
     pre-build:
